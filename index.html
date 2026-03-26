@@ -149,57 +149,26 @@
         </footer>
 
         <script>
-            const params = new URLSearchParams(window.location.search);
-            const status = params.get('status');
-            const code = params.get('code');
-            const msg = params.get('msg');
-            if (status) {
-                const messageDiv = document.createElement('div');
-                messageDiv.style.position = 'fixed';
-                messageDiv.style.left = '50%';
-                messageDiv.style.top = '90px';
-                messageDiv.style.transform = 'translateX(-50%)';
-                messageDiv.style.background = status === 'success' ? 'rgba(21, 174, 84, 0.95)' : 'rgba(180, 30, 30, 0.95)';
-                messageDiv.style.color = '#fff';
-                messageDiv.style.padding = '14px 22px';
-                messageDiv.style.borderRadius = '10px';
-                messageDiv.style.zIndex = '2000';
-                messageDiv.style.boxShadow = '0 0 18px rgba(0,0,0,.4)';
-                if (status === 'success') {
-                    messageDiv.textContent = 'Mensagem enviada com sucesso!';
-                } else {
-                    let texto = 'Erro ao enviar mensagem.';
-                    if (msg === 'brevo_fail') {
-                        texto += ' (Brevo HTTP ' + code + ')';
-                    }
-                    messageDiv.textContent = texto;
-                }
-                document.body.appendChild(messageDiv);
-                setTimeout(() => messageDiv.remove(), 6000);
-            }
-
-            // Handle form submission
-            document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            // Handle form submission using mailto
+            document.getElementById('contactForm').addEventListener('submit', (e) => {
                 e.preventDefault();
                 const formData = new FormData(e.target);
-                const data = Object.fromEntries(formData);
+                const name = formData.get('name')?.trim();
+                const email = formData.get('email')?.trim();
+                const message = formData.get('message')?.trim();
 
-                try {
-                    const vercelEndpoint = 'https://allan-ecru.vercel.app/api/contact';
-                    const response = await fetch(vercelEndpoint, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(data)
-                    });
-                    const result = await response.json();
-                    if (result.success) {
-                        window.location.search = '?status=success';
-                    } else {
-                        window.location.search = '?status=error&msg=' + encodeURIComponent(result.error);
-                    }
-                } catch (error) {
-                    window.location.search = '?status=error&msg=network_error';
+                if (!name || !email || !message) {
+                    alert('Por favor, preencha todos os campos.');
+                    return;
                 }
+
+                const subject = encodeURIComponent('Contato do site: ' + name);
+                const body = encodeURIComponent(
+                    `Nome: ${name}\nEmail: ${email}\nMensagem:\n${message}`
+                );
+
+                const mailtoUrl = `mailto:devao.developer@gmail.com?subject=${subject}&body=${body}`;
+                window.location.href = mailtoUrl;
             });
         </script>
 
