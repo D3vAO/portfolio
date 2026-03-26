@@ -4,7 +4,11 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'https://allan.heartkeystudio.com', // seu frontend
+  methods: ['GET','POST','PUT','PATCH','DELETE','OPTIONS'],
+  allowedHeaders: ['Content-Type']
+}));
 app.use(express.json());
 
 app.post('/api/contact', async (req, res) => {
@@ -37,8 +41,8 @@ app.post('/api/contact', async (req, res) => {
         });
         res.json({ success: true });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Failed to send email' });
+        console.error('sendMail error', error);
+        res.status(500).json({ error: error.message || 'Failed to send email' });
     }
 });
 
