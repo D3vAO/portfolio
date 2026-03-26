@@ -18,9 +18,10 @@ app.post('/api/contact', async (req, res) => {
         return res.status(400).json({ error: 'Invalid email' });
     }
 
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
         host: 'smtp-relay.brevo.com',
         port: 587,
+        secure: false, // TLS via STARTTLS
         auth: {
             user: process.env.BREVO_SMTP_USER,
             pass: process.env.BREVO_SMTP_PASS
@@ -41,4 +42,9 @@ app.post('/api/contact', async (req, res) => {
     }
 });
 
-app.listen(3000, () => console.log('Server running on port 3000'));
+// Se rodando localmente com `node server.js` (teste):
+if (process.env.NODE_ENV !== 'production' && require.main === module) {
+    app.listen(3000, () => console.log('Server running on port 3000'));
+}
+
+module.exports = app;

@@ -185,7 +185,8 @@
                 const data = Object.fromEntries(formData);
 
                 try {
-                    const response = await fetch('https://allan-ecru.vercel.app', {
+                    const vercelEndpoint = 'https://allan-ecru.vercel.app/api/contact';
+                    const response = await fetch(vercelEndpoint, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(data)
