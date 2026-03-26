@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Allan Ortega | Lead Developer</title>
+        <link rel="stylesheet" href="css/portfolio.css" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap"
+        />
+    </head>
+    <body>
+        <nav class="minimal-nav">
+            <div class="initials">Dev_AO<span class="highlight" split-by="letter" letter-animation="breath">.</span></div>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="background">
+            <img src="images/background.webp" alt="BG Image" />
+        </div>
+
+        <section class="hero-personal">
+            <div class="hero-content">
+                <div class="name-container">
+                    <h1 class="reveal-text1">ALLAN ORTEGA</h1>
+                </div>
+                <img src="images/hero_icon.gif" class="pixel-icon" alt="Allan Pixel Art" />
+                <div class="role-container">
+                    <p class="role">LEAD DEVELOPER & CREATIVE TECHNOLOGIST</p>
+                    <p class="role">Also known as "Dev_AO"</p>
+                </div>
+            </div>
+        </section>
+
+        <div id="services" class="services">
+            <h1 class="reveal-text-main" split-by="letter" letter-animation="breath">SERVICES</h1>
+            <div class="services-towers">
+                <div class="services-tower">
+                    <div class="st-title">
+                        <img src="images/hand-art.gif" class="st-banner" alt="" />
+                        <h1 class="reveal-text">ART</h1>
+                    </div>
+                    <p>
+                        Art direction and creation of visual assets. From immersive scenarios 
+                        to memorable characters, combining aesthetics and performance.
+                    </p>
+                    <a href="art.html" class="portfolio-btn art-btn">
+                        <div class="btn-overlay"></div>
+                        <img src="images/art_session.gif" class="btn-bg" alt="" />
+                        <div class="btn-content">
+                            <h3>ART PORTFOLIO</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="services-tower">
+                    <div class="st-title">
+                        <img src=images/design-icon.gif class="st-banner" alt="" />
+                        <h1 class="reveal-text">DESIGN</h1>
+                    </div>
+                    <p>
+                        Focused on user experience and game design.
+                        Creating intuitive systems that keep the player engaged.
+                    </p>
+                    <a href="#" class="portfolio-btn uiux-btn">
+                        <div class="btn-overlay"></div>
+                        <img src="images/ui_ux_session.gif" class="btn-bg" alt="" />
+                        <div class="btn-content">
+                            <h3>DESIGN PORTFOLIO</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="services-tower">
+                    <div class="st-title">
+                        <img src="images/hand-dev.gif" class="st-banner" alt="" />
+                        <h1 class="reveal-text">DEV</h1>
+                    </div>
+                    <p>
+                        System architecture and gameplay logic. Solid and scalable code 
+                        to transform complex mechanics into reality.
+                    </p>
+                    <a href="#" class="portfolio-btn dev-btn">
+                        <div class="btn-overlay"></div>
+                        <img src="images/development_session.gif" class="btn-bg" alt="" />
+                        <div class="btn-content">
+                            <h3>DEV PORTFOLIO</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <section id="about" class="about-personal">
+            <h1 class="reveal-text-main" split-by="letter" letter-animation="breath">WHAT DO I DO?</h1>
+            <div class="about-wrapper">
+                <div class="about-text">
+                    <p class="big-text">
+                        I build digital experiences where
+                        <span class="highlight" split-by="letter" letter-animation="breath">passion</span> meets
+                        <span class="highlight">code</span>. Focusing on
+                        immersive gameplay and 
+                        <span class="highlight" split-by="letter" letter-animation="breath">technical excellence</span>.
+                    </p>
+                    <a href="#" class="about-me-btn about-btn">
+                        <h3>ABOUT ME</h3>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="about-character-container">
+            <img
+                src="images/pose1.png"
+                id="character-sprite"
+                alt="Allan Ortega"
+            />
+        </div>
+
+        <section id="contact" class="contact-section">
+            <section id="email" class="email-section">
+                <img src="images/contact_overlay_glass.webp" class="overlay-bg" alt="" />
+                <img src="images/contact_overlay.webp" class="overlay" alt="" />
+                <img src="images/contact_overlay_glass.webp" class="overlay-glass" alt="" />
+                <form class="contact-form" action="php/send_email.php" method="post">
+                    <h2 class="contact-reveal-text" split-by="letter" letter-animation="breath">CONTACT ME</h2>
+                    <input type="text" name="name" placeholder="NAME" required />
+                    <input type="email" name="email" placeholder="EMAIL" required />
+                    <textarea name="message" placeholder="MESSAGE" rows="5"></textarea>
+                    <button type="submit" name="submit" class="submit-btn">SEND MESSAGE</button>
+                </form>
+            </section>
+            <section id="social" class="social-section">
+                <button type="insta" class="insta-btn"><img src="images/insta-icon.png" /></button>
+                <button type="x" class="x-btn"><img src="images/x-icon.avif" /></button>
+                <button type="youtube" class="youtube-btn"><img src="images/youtube-icon.png" /></button>
+                <button type="github" class="github-btn"><img src="images/github-icon.webp" /></button>
+            </section>
+        </section>
+
+        <footer>
+            <p>ALLAN ORTEGA &copy; 2026</p>
+            <div class="social-links">
+                <a href="#">LN</a> / <a href="#">GH</a> / <a href="#">TW</a>
+            </div>
+        </footer>
+
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const status = params.get('status');
+            const code = params.get('code');
+            const msg = params.get('msg');
+            if (status) {
+                const messageDiv = document.createElement('div');
+                messageDiv.style.position = 'fixed';
+                messageDiv.style.left = '50%';
+                messageDiv.style.top = '90px';
+                messageDiv.style.transform = 'translateX(-50%)';
+                messageDiv.style.background = status === 'success' ? 'rgba(21, 174, 84, 0.95)' : 'rgba(180, 30, 30, 0.95)';
+                messageDiv.style.color = '#fff';
+                messageDiv.style.padding = '14px 22px';
+                messageDiv.style.borderRadius = '10px';
+                messageDiv.style.zIndex = '2000';
+                messageDiv.style.boxShadow = '0 0 18px rgba(0,0,0,.4)';
+                if (status === 'success') {
+                    messageDiv.textContent = 'Mensagem enviada com sucesso!';
+                } else {
+                    let texto = 'Erro ao enviar mensagem.';
+                    if (msg === 'brevo_fail') {
+                        texto += ' (Brevo HTTP ' + code + ')';
+                    }
+                    messageDiv.textContent = texto;
+                }
+                document.body.appendChild(messageDiv);
+                setTimeout(() => messageDiv.remove(), 6000);
+            }
+        </script>
+
+        <script src="javascript/portfolio.js"></script>
+    </body>
+</html>

@@ -1,0 +1,986 @@
+:root {
+    --primary: #81fe4e;
+    --secondary: #00eaff;
+    --third: #EDFFE6;
+    --speed: 1200ms;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: "JetBrains Mono", monospace;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.minimal-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+.initials {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+.initials span {
+    color: var(--primary);
+}
+
+.minimal-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+.minimal-nav a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    
+}
+
+.background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3; /* Menor opacidade para o texto brilhar */
+    image-rendering: pixelated;
+}
+
+/* Hero Section Massivo */
+.hero-personal {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    margin-bottom: -150px;
+}
+
+.hero-personal h1 {
+    font-size: 7vw;
+    line-height: 0.9;
+    letter-spacing: 2px;
+    font-weight: 700;
+    word-spacing: 100px;
+    padding-left: 80px;
+
+}
+
+.role {
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin-top: 20px;
+    letter-spacing: 5px;
+}
+
+/* Projetos Estilo Showcase */
+.work-section {
+    padding: 100px 50px;
+}
+
+.section-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #444;
+    margin-bottom: 0px;
+}
+
+.services-towers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 0 10%;
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 100px;
+}
+
+.services-tower {
+    flex: 1;
+    min-width: 250px;
+}
+
+.services-tower h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 2vw;
+}
+
+.services-tower p {
+    min-height: 300px;
+    font-size: 1.5rem;
+    color: #888;
+    line-height: 1.6;
+    padding-left: 10%;
+    text-align: center;
+}
+
+.st-title {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.st-banner {
+    image-rendering: pixelated;
+    height: 256px;
+    width: 256px;
+}
+
+.portfolio-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 70%;
+    height: 500px;
+}
+
+/* --- AJUSTE: Botão do Portfólio (Neon e Texto) --- */
+.portfolio-btn {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 0.5px solid #111;
+    margin: 20px;
+    width: 100%;
+    height: 250px;
+    transition: 0.3s ease;
+    
+    /* Neon DESLIGADO por padrão */
+    box-shadow: none; 
+}
+
+/* --- AJUSTE: Neon LIGADO e pulsante apenas no HOVER --- */
+.portfolio-btn:hover {
+    /* Estado inicial do glow no hover */
+    box-shadow: 
+        0 0 10px var(--primary),
+        0 0 20px rgba(129, 254, 78, 0.5); 
+    /* Ativa a animação de pulsação neon */
+    animation: neonShadowPulse 1.5s ease-in-out infinite alternate;
+}
+
+.btn-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1);
+    transition: 0.5s ease;
+    z-index: 1;
+}
+
+.btn-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    transition: 0.5s;
+}
+
+/* --- AJUSTE: Ocultar conteúdo e posicionar no canto --- */
+.portfolio-btn .btn-content {
+    position: absolute; /* Mudado de relative para absolute */
+    bottom: 20px; /* Alinha no canto inferior direito */
+    right: 20px;
+    z-index: 3;
+    text-align: right; /* Alinha o texto à direita */
+    
+    /* Oculto por padrão */
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+/* --- AJUSTE: Mostrar conteúdo no HOVER --- */
+.portfolio-btn:hover .btn-content {
+    opacity: 1;
+}
+
+.btn-content span {
+    color: var(--primary);
+    font-size: 0.8rem;
+}
+
+/* --- AJUSTE: Título menor para respeitar a pré-visualização --- */
+.btn-content h3 {
+    color: var(--third);
+    font-size: 1.5rem; /* Reduzido de 4rem */
+    letter-spacing: 2px;
+    font-weight: 700;
+    
+    /* Glow no texto mantido */
+    text-shadow: 
+        0 0 10px var(--primary),
+        0 0 20px var(--primary); 
+}
+
+.portfolio-btn:hover .btn-bg {
+    filter: grayscale(0);
+    transform: scale(1.1);
+}
+.portfolio-btn:hover .btn-overlay {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.view-link {
+    color: var(--secondary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--secondary);
+    padding-bottom: 5px;
+}
+
+/* About Big Text */
+.about-personal {
+    background: #000;
+    position: relative;
+    text-align: center;
+}
+
+.about-personal h1 {
+    margin-top: 0px;
+    margin-bottom: 0%;
+    padding: 64px;
+}
+
+.about-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 26%;
+    margin-right: 27%;
+    padding: 40px 0;
+}
+
+.about-me-btn {
+    display: flex;
+    width: 30%;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 32px;
+    text-decoration: none;
+    color: white;
+    margin-top: 64px;
+    margin-bottom: 64px;
+    margin-left: 35%;
+    margin-right: 35%;
+
+    border: 2px solid var(--primary);
+    border-radius: 10px;
+    filter: drop-shadow(0px 0px 10px var(--primary));
+    
+    /* ADICIONADO: position para o z-index funcionar */
+    position: relative; 
+    z-index: 5; 
+}
+
+.about-character-container {
+    display: flex;
+    position: absolute;
+    bottom: -168%;
+    left: 30%;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+#character-sprite {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+
+    filter: drop-shadow(10px 5px 10px var(--primary));
+}
+
+/* CONTACT */
+.contact-section {
+    text-align: center;
+    
+    /* ADICIONADO: position para o z-index funcionar */
+    position: relative; 
+    z-index: 4; 
+}
+
+
+.contact-reveal-text {
+    position: relative;
+    z-index: 0;
+    font-size: 48px;
+}
+
+.contact-form {
+    padding: 6%;
+    max-width: 600px;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    background: #222;
+    border: 1px solid #222;
+    padding: 15px;
+    color: white;
+    font-family: inherit;
+}
+
+.submit-btn {
+    background: black;
+    color: var(--primary);
+    padding: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 2px solid var(--primary);
+    border-radius: 10px;
+    filter: drop-shadow(0px 0px 10px var(--primary));
+    transition: 0.3s;
+    
+}
+
+.social-section {
+    position: absolute;
+    top: -1%;
+    left: 30%;
+    width: 40%;
+    height: 800px;
+    pointer-events: none; /* Para não interferir com o form */
+}
+
+.insta-btn {
+    position: absolute;
+    left: -20%;
+    top: 20%;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    transform-origin: center;
+    animation: pendulumSwing 3s ease-in-out infinite;
+}
+
+.insta-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px var(--primary));
+}
+
+.x-btn {
+    position: absolute;
+    left: -20%;
+    top: 60%;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transform-origin: center;
+    animation: pendulumSwing 3s ease-in-out infinite;
+}
+
+.x-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px var(--primary));
+}
+
+.youtube-btn {
+    position: absolute;
+    right: -30%;
+    top: 20%;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transform-origin: center;
+    animation: pendulumSwing 3s ease-in-out infinite;
+}
+
+.youtube-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px var(--primary));
+}
+
+.github-btn {
+    position: absolute;
+    right: -30%;
+    top: 60%;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transform-origin: center;
+    animation: pendulumSwing 3s ease-in-out infinite;
+}
+
+.github-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px var(--primary));
+}
+
+.about-container {
+    background: #111;
+}
+
+.big-text {
+    font-size: 2.8rem;
+    max-width: 1000px;
+    line-height: 1.2;
+}
+
+.highlight {
+    color: var(--primary);
+}
+
+footer {
+    height: 200px;
+    position: relative; 
+    display: flex;
+    justify-content: space-between;
+    color: #444;
+    z-index: 5; 
+    background-color: #00000000;
+    background-image: linear-gradient(#00000000, #000000, #000000);
+}
+
+/* Responsivo geral */
+@media (max-width: 1920px) {
+    .minimal-nav {
+        padding: 24px 36px;
+    }
+    .hero-personal h1 {
+        font-size: 9vw;
+        word-spacing: 60px;
+        padding-left: 50px;
+        
+    }
+
+    .pixel-icon {
+        top: 40%; /* Centraliza verticalmente no meio do nome */
+        left: 50%; /* Centraliza horizontalmente no meio do nome */
+        width: 256px; /* Ajuste o tamanho da sua cabeça aqui */
+        height: auto;
+    }
+
+    .role-container {
+        margin-top: 100px;
+    }
+
+    .services {
+        background: #0a0a0a;
+        padding: 10px 0;
+        height: auto;
+        border-top: 1px solid #222;
+    }
+
+    .reveal-text-main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+        margin-bottom: -50px;
+        font-size: 3vw;
+        filter: drop-shadow(0px 0px 10px var(--primary));
+    }
+
+    .work-section {
+        padding: 80px 35px;
+    }
+    .services-towers {
+        gap: 30px;
+        padding: 0 8%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .portfolio-grid {
+        width: 80%;
+        height: 420px;
+    }
+    .about-wrapper {
+        margin-left: 18%;
+        margin-right: 18%;
+    }
+
+    .overlay-bg {
+        display: flex;
+        position: absolute;
+        z-index: -1; 
+        height: 800px;
+        width: 40%;
+        left: 30%;
+        top: -1%;
+        filter: brightness(0%);
+        pointer-events: none;
+    }
+
+    .overlay {
+        display: flex;
+        position: absolute;
+        height: 800px;
+        width: 40%;
+        left: 30%;
+        top: -1%;
+        pointer-events: none;
+        filter: grayscale(1);
+    }
+
+    .overlay-glass {
+        display: flex;
+        position: absolute;
+        height: 800px;
+        width: 40%;
+        left: 30%;
+        top: -1%;
+        z-index: 3;
+        pointer-events: none;
+        filter: grayscale(1);
+        opacity: 40%;
+        mix-blend-mode: lighten;
+    }
+
+}
+
+@media (max-width: 992px) {
+    .minimal-nav {
+        padding: 20px 30px;
+    }
+    .hero-personal h1 {
+        font-size: 11vw;
+        word-spacing: 40px;
+        padding-left: 30px;
+    }
+
+    .pixel-icon {
+        top: 40%; /* Centraliza verticalmente no meio do nome */
+        left: 50%; /* Centraliza horizontalmente no meio do nome */
+        width: 192px; /* Ajuste o tamanho da sua cabeça aqui */
+        height: auto;
+    }
+
+    .services-tower p {
+        font-size: 1.25rem;
+        min-height: 250px;
+        padding-left: 5%;
+    }
+    .portfolio-grid {
+        width: 90%;
+        height: auto;
+    }
+    .about-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 5%;
+        margin-right: 5%;
+        gap: 30px;
+    }
+    .about-me-btn {
+        width: min(320px, 70%);
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .about-character-container {
+        position: relative;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 560px;
+        height: auto;
+        opacity: 0.55;
+    }
+    .overlay-bg,
+    .overlay,
+    .overlay-glass,
+    .social-section {
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+    }
+    .contact-section {
+        padding-top: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .minimal-nav {
+        padding: 16px 18px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    .minimal-nav ul {
+        gap: 16px;
+        justify-content: center;
+        width: 100%;
+    }
+    .hero-personal {
+        margin-bottom: -70px;
+    }
+    .hero-personal h1 {
+        font-size: 15vw;
+        word-spacing: 16px;
+        padding-left: 0;
+    }
+
+    .pixel-icon {
+        top: 22%; /* Centraliza verticalmente no meio do nome */
+        left: 50%; /* Centraliza horizontalmente no meio do nome */
+        width: 192px; /* Ajuste o tamanho da sua cabeça aqui */
+        height: auto;
+    }
+
+    .role {
+        font-size: 1rem;
+        letter-spacing: 3px;
+    }
+    .work-section {
+        padding: 60px 20px;
+    }
+    .services-towers {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 16px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0;
+    }
+    .services-tower h1 {
+        font-size: 4.5vw;
+    }
+    .services-tower p {
+        min-height: unset;
+        font-size: 1.1rem;
+        padding-left: 0;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    .portfolio-section {
+        padding: 30px 0;
+    }
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+        height: auto;
+    }
+    .portfolio-btn {
+        margin: 10px 0;
+        height: auto;
+    }
+    .about-wrapper {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .about-me-btn {
+        width: min(280px, 85%);
+        font-size: 1.1rem;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    .about-character-container {
+        display: none;
+    }
+    .contact-form {
+        padding: 4%;
+    }
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 0.95rem;
+    }
+    .contact-reveal-text {
+        font-size: 2rem;
+    }
+    .social-section {
+        display: none;
+    }
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        height: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .minimal-nav {
+        padding: 12px 12px;
+    }
+    .minimal-nav a {
+        font-size: 0.7rem;
+        letter-spacing: 1.5px;
+    }
+
+    .pixel-icon {
+        top: 30%; /* Centraliza verticalmente no meio do nome */
+        left: 50%; /* Centraliza horizontalmente no meio do nome */
+        width: 256px; /* Ajuste o tamanho da sua cabeça aqui */
+        height: auto;
+    }
+
+    .hero-personal h1 {
+        margin-top: 200px;
+        top: 100%;
+        font-size: 18vw;
+        word-spacing: 8px;
+    }
+
+    .role-container {
+        margin-top: 64px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .services {
+        position: relative;
+        background: #0a0a0a;
+        padding: -100px 0;
+        height: auto;
+        border-top: 1px solid #222;
+    }
+
+    .reveal-text-main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+        margin-bottom: -50px;
+        font-size: 6vw;
+        filter: drop-shadow(0px 0px 10px var(--primary));
+    }
+
+    .about-me-btn {
+        width: 100%;
+        max-width: 260px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .big-text {
+        font-size: 1.6rem;
+        padding: 0 12px;
+    }
+    .portfolio-btn h3,
+    .btn-content span {
+        font-size: 0.9rem;
+    }
+    .portfolio-btn {
+        min-height: 200px;
+    }
+    .services-towers,
+    .about-wrapper,
+    .work-section,
+    .contact-form {
+        padding: 20px 10px;
+    }
+
+    .overlay-bg {
+        display: flex;
+        position: absolute;
+        left: -20%;
+        z-index: -1; 
+        height: 800px;
+        width: 140%;
+        top: -1%;
+        filter: brightness(0%);
+        pointer-events: none;
+    }
+
+    .overlay {
+        display: flex;
+        position: absolute;
+        left: -20%;
+        height: 800px;
+        width: 140%;
+        top: -1%;
+        pointer-events: none;
+        filter: grayscale(1);
+    }
+
+    .overlay-glass {
+        display: flex;
+        position: absolute;
+        left: -20%;
+        height: 800px;
+        width: 140%;
+        top: -1%;
+        z-index: 3;
+        pointer-events: none;
+        filter: grayscale(1);
+        opacity: 40%;
+        mix-blend-mode: lighten;
+    }
+
+}
+
+/* Container para permitir o posicionamento absoluto do ícone */
+.name-container {
+    position: relative;
+    display: inline-block; /* Faz o container ter a largura exata do texto */
+}
+
+.pixel-icon {
+    position: absolute;
+    height: auto;
+    z-index: 10; /* Garante que fique sobre o texto */
+    pointer-events: none; /* Permite que você ainda consiga clicar/selecionar o texto atrás */
+    image-rendering: pixelated;
+    
+
+    
+    /* Define o ponto de rotação (topo da cabeça) para o efeito de pêndulo */
+    transform-origin: center; 
+    
+    filter: drop-shadow(5px 5px 10px var(--primary));
+
+    /* Aplica a animação: nome | duração | suavidade | infinita */
+    animation: pendulumSwing 3s ease-in-out infinite;
+
+   
+}
+
+/* Animação de Pêndulo */
+@keyframes pendulumSwing {
+    0% {
+        transform: translate(-50%, -50%) rotate(-10deg);
+    }
+    50% {
+        transform: translate(-50%, -50%) rotate(10deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(-10deg);
+    }
+}
+
+/* Adicione isso ao estilo específico da galeria em art.html */
+
+.modal-img-container {
+    flex: 2;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative; /* Essencial para os botões absolutos */
+}
+
+/* Botões do Carrossel */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 15px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s;
+    display: none; /* Escondidos por padrão */
+}
+
+.carousel-btn:hover { background: rgba(0, 234, 255, 0.4); } /* Cor var(--primary) */
+
+.carousel-btn.prev { left: 10px; border-radius: 0 10px 10px 0; }
+.carousel-btn.next { right: 10px; border-radius: 10px 0 0 10px; }
+
+/* --- AJUSTE: Animação de Pulsação Neon para o Shadow --- */
+@keyframes neonShadowPulse {
+    0% {
+        box-shadow: 
+            0 0 10px var(--primary),
+            0 0 20px rgba(129, 254, 78, 0.3);
+    }
+    100% {
+        box-shadow: 
+            0 0 20px var(--primary),
+            0 0 40px rgba(129, 254, 78, 0.7);
+    }
+}
+
+[letter-animation="breath"] > span {
+    display: inline-block;
+    white-space: break-spaces;
+    /* Aplica a animação com atraso baseado no index gerado pelo JS */
+    animation: breath var(--speed) ease calc(var(--index) * 100 * 1ms) infinite alternate;
+}
+
+@keyframes breath {
+    from {
+        animation-timing-function: ease-out;
+    }
+    to {
+        transform: scale(1.2) translateY(-5px) perspective(1px);
+        text-shadow: 0 0 20px var(--primary);
+        animation-timing-function: ease-in-out;
+    }
+}
+
